@@ -1,14 +1,5 @@
--- 0. (Optional) Drop the database to start clean
-DROP DATABASE IF EXISTS CustomerDB;
-
--- 1. Create & switch to CustomerDB
-CREATE DATABASE CustomerDB;
-
-USE CustomerDB;
 
 
--- 2. Create Customers
-DROP TABLE IF EXISTS Customers;
 CREATE TABLE Customers (
     CustomerID    VARCHAR(10)   PRIMARY KEY,
     CustomerName  VARCHAR(100)  NOT NULL,
@@ -20,8 +11,6 @@ CREATE TABLE Customers (
 );
 
 
--- 3. Create Shippers
-DROP TABLE IF EXISTS Shippers;
 CREATE TABLE Shippers (
     ShipperID    VARCHAR(10)   PRIMARY KEY,
     ShipperName  VARCHAR(100),
@@ -29,8 +18,6 @@ CREATE TABLE Shippers (
 );
 
 
--- 4. Create Orders
-DROP TABLE IF EXISTS Orders;
 CREATE TABLE Orders (
     OrderID      INT            PRIMARY KEY,
     CustomerID   VARCHAR(10),
@@ -41,7 +28,7 @@ CREATE TABLE Orders (
     FOREIGN KEY (ShipperID)  REFERENCES Shippers(ShipperID)
 );
 
--- 5. Populate Customers (one INSERT per row)
+
 INSERT INTO Customers
   (CustomerID, CustomerName, ContactName, Address, City, PostalCode, Country)
 VALUES
@@ -64,7 +51,7 @@ VALUES
   ('5', 'Berglunds snabbköp', 'Christina Berglund', 'Berguvsvägen 8', 'Luleå', 'S-958 22', 'Sweden');
 
 
--- 6. Populate Shippers
+
 INSERT INTO Shippers (ShipperID, ShipperName, Phone)
 VALUES
   ('1', 'Speedy Express', '(503) 555-9831');
@@ -76,7 +63,7 @@ VALUES
   ('3', 'Federal Shipping', '(503) 555-9931');
 
 
--- 7. Populate Orders
+
 INSERT INTO Orders (OrderID, CustomerID, EmployeeID, OrderDate, ShipperID)
 VALUES (10278, '5', 8, '1996-08-12', '2');
 INSERT INTO Orders (OrderID, CustomerID, EmployeeID, OrderDate, ShipperID)
@@ -92,7 +79,7 @@ VALUES (10383, '4', 8, '1996-12-16', '3');
 INSERT INTO Orders (OrderID, CustomerID, EmployeeID, OrderDate, ShipperID)
 VALUES (10384, '5', 3, '1996-12-16', '3');
 
--- 8. Verify
+
 select * FROM Customers;
 SELECT * FROM Shippers;
 SELECT * FROM Orders;
