@@ -142,3 +142,51 @@ group by department;
 select department , sum(salary) as sum_salary
 from employees
 group by department;
+
+select *
+from employees;
+
+-- Find the number of employees in each city using COUNT.
+select city , count(city) as num_employees
+from employees
+group by city;
+
+-- Find the highest and lowest salary in each department.
+SELECT department, MAX(salary) AS max_salary, MIN(salary) AS min_salary
+FROM employees
+GROUP BY department;
+
+-- Show the number of employees in each department who earn more than 50,000.
+select department ,count(*) as num_employees
+from employees
+where salary > 50000
+group by department;
+
+-- Show the number of employees in each city who work in the IT department.
+select city , count(*) as location
+from employees 
+where department = 'IT'
+group by city;
+
+-- Find the total salary paid to employees in each city, but only include cities where the total salary is more than 1,00,000
+select city , sum(salary) as salary_to_city
+from employees
+group by city
+having sum(salary) > 100000;
+
+-- Find the average salary of employees in each department, but only show departments where the average salary is less than 55,000.
+select department ,avg(salary) as avg_salary
+from employees
+group by department
+having avg(salary) < 55000;
+
+-- Display each department along with the highest and lowest salary in that department.
+select department , max(salary) as M_salary, min(salary) as m_salary
+from employees
+group by department;
+
+-- Show each department that has more than one employee, along with the number of employees in that department.
+select department , count(*) as emp_in_dep
+from employees
+group by department
+having count(*) > 1;
