@@ -127,3 +127,18 @@ MODIFY COLUMN SALARY DECIMAL(10, 2);
 
 -- Drop the entire employees table from the database.
 DROP TABLE EMPLOYEES;
+
+-- Count the number of employees in each department
+select department ,count(*)
+from employees
+group by department;
+
+-- Find the average salary of employees in each department.
+select  department, avg(salary) as avg_salary
+from employees
+group by department;
+
+-- Find the total salary paid for each department (use SUM).
+select department , sum(salary) as sum_salary
+from employees
+group by department;
